@@ -13,6 +13,21 @@
   <script src='nprogress.js'></script>
 
   <script>if(location.hostname.match(/ricostacruz\.com$/)){var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-20473929-1"]),_gaq.push(["_trackPageview"]),function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}()}</script>
+
+  <style>
+    body{background-color: #f6f6f6;}
+    .contents{
+      padding: 24px;
+      margin: 16px;
+      background-color: #fff;
+      border-radius: 4px;
+    }
+
+  </style>
+
+
+
+
 </head>
 
 <body style='display: none'>
@@ -23,7 +38,7 @@
     trickle animations to convince your users that something is happening!</p>
   </header>
 
-  <div class='contents fade out'>
+  <div class='contents fade out' id="container">
     <div class='controls'>
       <p>
         <button class='button play' id='b-0'></button>
@@ -71,6 +86,8 @@
     $('body').show();
     $('.version').text(NProgress.version);
     NProgress.start();
+    NProgress.configure({ parent: '#container' });
+    NProgress.configure({ showSpinner: false });
     setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
 
     $("#b-0").click(function() { NProgress.start(); });
